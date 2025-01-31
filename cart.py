@@ -15,3 +15,11 @@ class Cart:
 
     def clear_cart(self):
         self.items = []
+
+    def apply_discount(self, discount_percentage):
+        """Reduziert den Gesamtpreis um einen bestimmten Prozentsatz."""
+        if discount_percentage < 0 or discount_percentage > 100:
+            raise ValueError("Ungültiger Rabatt")
+        discount_factor = (100 - discount_percentage) / 100
+        for item in self.items:
+            item["price"] *= discount_factor
